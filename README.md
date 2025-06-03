@@ -1,37 +1,57 @@
-# Harper Python Bindings
+# harper-py
 
-Python bindings for the `harper-core` Rust library, providing access to Harper's core functionality from Python.
+Python bindings for the Harper grammar checker library.
 
-## Prerequisites
+## Status
 
-- Python 3.8 or higher
-- Rust toolchain (install via [rustup](https://rustup.rs/))
-- `maturin` (Python package, will be installed automatically if not present)
+Early development - Currently provides basic version information. More functionality coming soon!
 
 ## Installation
 
-1. Clone this repository
-2. Install in development mode:
-   ```bash
-   pip install -e .
-   ```
+```bash
+# Clone the repository
+git clone https://github.com/yourusername/harper-py.git
+cd harper-py
+
+# Set up a virtual environment (recommended)
+python -m venv venv
+source venv/bin/activate  # On Windows use `venv\Scripts\activate`
+
+# Install the package in development mode
+pip install -e .
+```
 
 ## Usage
 
 ```python
 import harper_py
 
-# Create a new document
-doc = harper_py.get_document("Hello, world!")
-print(doc)  # Prints the document representation
+# Get the version of the underlying harper-core library
+version = harper_py.core_version()
+print(f"Harper Core Version: {version}")
+
+# Currently available functions:
+# - core_version(): Returns the version of the harper-core library
 ```
 
 ## Development
 
-To build the extension:
+This project uses [maturin](https://github.com/PyO3/maturin) for building Python extensions in Rust.
+
+### Prerequisites
+
+- Rust (install via [rustup](https://rustup.rs/))
+- Python 3.7+
+- maturin (`pip install maturin`)
+
+### Building
 
 ```bash
-maturin develop  # or 'maturin develop --release' for optimized build
+# Build and install in development mode
+maturin develop
+
+# Run tests
+python test.py
 ```
 
 ## License
