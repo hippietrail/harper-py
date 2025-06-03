@@ -10,10 +10,17 @@ def test_core_version():
 
 def test_create_english_document():
     print("\nTesting create_english_document():")
-    result = harper_py.create_english_document()
-    print(f"  Result: {result}")
-    assert isinstance(result, str)
-    assert len(result) > 0
+    # Test with default text
+    default_result = harper_py.create_english_document()
+    print(f"  Default result: {default_result}")
+    assert isinstance(default_result, str)
+    assert len(default_result) > 0
+    
+    # Test with custom text
+    custom_text = "Testing custom text"
+    custom_result = harper_py.create_english_document(custom_text)
+    print(f"  Custom text result: {custom_result}")
+    assert custom_text in custom_result
     print("  Test passed!")
 
 if __name__ == "__main__":

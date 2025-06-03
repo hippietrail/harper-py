@@ -10,10 +10,14 @@ fn core_version() -> &'static str {
 
 /// Creates a new Document with pre-configured English language support.
 ///
+/// # Arguments
+/// * `text` - The text to create the document from (default: "Hello, world!")
+///
 /// This creates a document with a curated set of English grammar rules.
 #[pyfunction]
-fn create_english_document() -> PyResult<String> {
-    let doc = Document::new_plain_english_curated("Hello, world!");
+#[pyo3(signature = (text = "Hello, world!"))]
+fn create_english_document(text: &str) -> PyResult<String> {
+    let doc = Document::new_plain_english_curated(text);
     Ok(doc.get_full_string())
 }
 
