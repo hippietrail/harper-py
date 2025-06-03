@@ -4,7 +4,7 @@ Python bindings for the Harper grammar checker library.
 
 ## Status
 
-Early development - Currently provides basic version information. More functionality coming soon!
+Early development - Currently the bare minimum functionality.
 
 ## Installation
 
@@ -30,9 +30,17 @@ import harper_py
 version = harper_py.core_version()
 print(f"Harper Core Version: {version}")
 
-# Currently available functions:
-# - core_version(): Returns the version of the harper-core library
+# Create a new English document
+document_text = harper_py.create_english_document()
+print(f"Document content: {document_text}")
 ```
+
+# Currently available functions:
+
+# - `core_version()`: Returns the version of the harper-core library
+# - `create_english_document(text: str = "Hello, world!")`: Creates a new document with pre-configured English language support.
+  - `text`: Optional input text (default: "Hello, world!")
+  - Returns: The processed document content as a string
 
 ## Development
 
@@ -44,7 +52,7 @@ This project uses [maturin](https://github.com/PyO3/maturin) for building Python
 - Python 3.7+
 - maturin (`pip install maturin`)
 
-### Building
+### Building and Testing
 
 ```bash
 # Build and install in development mode
