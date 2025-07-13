@@ -9,4 +9,5 @@ crate-type = ["cdylib"]
 
 [dependencies]
 pyo3 = { version = "0.25.0", features = ["extension-module"] }
-harper-core = "0.40.0"
+harper-core = { version = "0.49.0", features = ["concurrent"] }
+parking_lot = "0.12"

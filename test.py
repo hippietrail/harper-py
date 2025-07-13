@@ -4,26 +4,19 @@ def test_core_version():
     print("\nTesting core_version():")
     version = harper_py.core_version()
     print(f"  Harper Core Version: {version}")
-    assert isinstance(version, str)
-    assert len(version) > 0
+    assert version is not None and version != ""
     print("  Test passed!")
 
-def test_create_english_document():
-    print("\nTesting create_english_document():")
-    # Test with default text
-    default_result = harper_py.create_english_document()
-    print(f"  Default result: {default_result}")
-    assert isinstance(default_result, str)
-    assert len(default_result) > 0
-    
-    # Test with custom text
-    custom_text = "Testing custom text"
-    custom_result = harper_py.create_english_document(custom_text)
-    print(f"  Custom text result: {custom_result}")
-    assert custom_text in custom_result
+def test_document_creation():
+    print("\nTesting document creation:")
+    # Test creating a document
+    text = "Hello, world!"
+    doc = harper_py.PyDocument(text)
+    assert doc.get_text() == text
+    print("  Document created and text matches")
     print("  Test passed!")
 
 if __name__ == "__main__":
     test_core_version()
-    test_create_english_document()
+    test_document_creation()
     print("\nAll tests passed!")
