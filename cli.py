@@ -21,13 +21,15 @@ def main():
     if args.lint:
         text = doc.get_text()
         lint_group = harper_py.create_curated_lint_group()
-        lints = doc.get_lints(lint_group)
+        unsorted_lints = doc.get_lints(lint_group)
         
-        if not lints:
+        if not unsorted_lints:
             print("No issues found!")
         else:
-            print(f"Found {len(lints)} issue(s):")
+            print(f"Found {len(unsorted_lints)} issue(s):")
             lines = text.split('\n')
+
+            lints = sorted(unsorted_lints, key=lambda lint: lint.start())
             
             for i, lint in enumerate(lints, 1):
                 # Find which line the lint is on
